@@ -1,0 +1,66 @@
+h3.title {
+    font-weight: 400;
+    margin: 0;
+}
+
+.search_input_wr {
+    position: relative;
+}
+
+.search_input {
+    width: 100%;
+    padding: 14px 200px 14px 15px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #272727;
+    border: 1px solid rgba(23, 23, 25, 0.2);
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.search_input:focus {
+    outline: none;
+    background: rgba(197, 228, 249, 0.3);
+    border: 1px solid #1390E5;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.search_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 14px 0;
+    background: #1390E5;
+    width: 150px;
+    text-align: center;
+    border: 1px solid #1390E5;
+    border-radius: 0 5px 5px 0;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.like {
+    position: absolute;
+    top: 14px;
+    right: 164px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: url("heart.png");
+}
+
+.like.active {
+    background: url("heart-act.png");
+}
+
+.container button.like {
+    display: block;
+}
+
+.search-block button.like {
+    display: none;
+}

@@ -1,0 +1,53 @@
+.order_wr {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 2px;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 0 20px;
+    transition: .3s;
+}
+
+.order_wr:hover {
+    background: #f1f1f1;
+}
+
+.order_title {
+    background: none;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.order_title:focus {
+    outline: none;
+}
+
+.order-btn_wr {
+    display: none;
+}
+
+.order_wr:hover .order-btn_wr{
+    display: block;
+}
+
+.order-btn {
+    background: none;
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    transition: .3s;
+}
+
+.edit {
+    color: #1390E5;
+    margin-right: 30px;
+}
+
+.delete {
+    color: #FF0000;
+}

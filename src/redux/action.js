@@ -1,0 +1,11 @@
+export const EnterUserAction = (data) => {return {type: 'LOG_IN', data}};
+export const ExitUser = (data) => {return {type: 'EXIT', data}};
+export const VideoSearch = (data) => {return {type: 'VIDEO_SEARCH', data}};
+export const AddNewSearch = (data) => {return{type: 'SEARCH_LIKE', data}};
+export const AddEdit = (data) => {return {type: 'ADD_ORDER', data}};
+export const AddFavOrder = (data) => {return{type: 'NEW_FAV_ORDER', data}};
+export const EditTheOrder = (data) => {return{type: 'EDIT_ORDER', data}};
+export const EditFavOrder = (data, id) => {return{type: 'EDIT_FAV_ORDER', data, id}};
+export const DeleteTheOrder = (data) => {return{type: 'DELETE_ORDER', data}};
+export const LocalStoreOrder = (data) => {return{type: 'LOCAL_STORE', data}};
+export const UseSearch = (data) => {return{type: 'USE_SEARCH', data}};

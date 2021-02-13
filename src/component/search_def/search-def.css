@@ -1,0 +1,45 @@
+.search-block {
+    margin: 200px auto 0;
+    width: 686px;
+    text-align: center;
+}
+
+.search-block h3.title {
+    font-size: 36px;
+    line-height: 52px;
+    margin-bottom: 40px;
+}
+
+.table-video {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    margin-bottom: 30px;
+}
+
+.list-video .content_wrapper {
+    width: 800px;
+    height: 90px;
+    margin-bottom: 32px;
+    display: flex;
+}
+
+.list-video .video_wr {
+    width: 160px;
+    height: 90px;
+    margin-right: 20px;
+}
+
+
+.table-video .video_wr {
+    width: 100%;
+    height: 138px;
+}
+
+.container h3.title {
+    font-size: 28px;
+    line-height: 40px;
+    margin: 40px 0 13px
+}
+

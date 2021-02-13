@@ -1,0 +1,120 @@
+.modal_log_wr {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fafafa;
+}
+
+.modalLog {
+    position: absolute;
+    top: calc(50% - 246px);
+    left: calc(50% - 255px);
+    width: 510px;
+    background: #ffffff;
+    border: 1px solid rgba(39, 39, 39, 0.1);
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 50px 88px 60px;
+}
+.error_text {
+    color: #FF0000;
+    font-size: 10px;
+}
+
+
+.logo_wrapper {
+    margin: 0 auto 40px;
+    background: url("../app/logo.png") 100%;
+    width: 88px;
+    height: 88px;
+}
+
+h3.title_log-in {
+    margin: 0 0 20px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #000000;
+}
+
+.input_wrapper{
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input_wrapper label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(23, 23, 25, 0.3);
+}
+
+input.input_auth {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(23, 23, 25, 0.2);
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    color: #272727;
+}
+
+input.input_auth:focus {
+    outline: none;
+    background: rgba(197, 228, 249, 0.3);
+    border: 1px solid #1390E5;
+}
+
+.eye {
+    position: absolute;
+    border: none;
+    bottom: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    background: url("eye-off.png");
+}
+
+input.input_auth:focus +.eye{
+    background: url("eye-off-act.png");
+}
+
+.eye.active {
+    background: url("eye.png");
+}
+
+input.input_auth:focus +.eye.active{
+    background: url("eye.png");
+}
+
+.eye:focus {
+    outline: none;
+}
+
+.btn_wrapper {
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+button.btn_authorization {
+    margin: 0 auto;
+    width: 176px;
+    background: #1390E5;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    padding: 14px 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+

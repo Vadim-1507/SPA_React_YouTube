@@ -1,0 +1,55 @@
+header {
+    background: #FFFFFF;
+}
+
+.header_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+.header_logo_wr {
+    width: 48px;
+    height: 48px;
+    background: url("../app/logo.png") no-repeat;
+    background-size: 100%;
+    margin-right: 40px;
+}
+
+.header_link, .exit {
+    display: block;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #1390E5;
+    margin-right: 40px;
+    border-bottom: 4px solid #ffffff;
+    box-sizing: border-box;
+    padding: 23px 0;
+    transition: .3s;
+}
+
+.exit {
+    border: none;
+    border-bottom: 4px solid #ffffff;
+    background: none;
+}
+
+.exit:focus {
+    outline: none;
+}
+
+.header_link.active {
+    border-bottom: 4px solid #1390E5;
+}
+
+.header_link:hover, .exit:hover {
+    border-bottom: 4px solid #1390E5;
+}
