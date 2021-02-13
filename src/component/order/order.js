@@ -47,6 +47,11 @@ class Order extends Component {
 
         this.props.UseSerOrder(search);
         this.props.UseOrder(videos);
+
+        if(videos) {
+            this.props.history.replace('/');
+        }
+
     }
 
     render() {

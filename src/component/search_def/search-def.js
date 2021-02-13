@@ -71,7 +71,6 @@ class SearchDef extends Component {
 
     render() {
         const items = this.state.item
-        console.log(items)
         let ClassWr = 'search-block';
         if (items) {
             ClassWr = 'container';
