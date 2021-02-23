@@ -1,7 +1,7 @@
 import React from "react";
 import './video.css';
 
-const Video = ({Info}) => {
+function Video ({Info}) {
     const {id, snippet} = Info;
     const source = `https://www.youtube.com/embed/${id.videoId}`
     return (

@@ -5,7 +5,6 @@ import {AddEdit, AddNewSearch, LocalStoreOrder, UseSearch, VideoSearch} from "..
 import {connect} from 'react-redux';
 import FilterPanel from "../filter_panel/filter-panel";
 import Video from "../video/video";
-
 import './search-def.css';
 
 class SearchDef extends Component {
@@ -14,20 +13,21 @@ class SearchDef extends Component {
     state = {
         search: '',
         content: 'list-video',
-        item: null,
+        video: null,
     }
 
     componentDidMount() {
-        const order = this.props.orders.length;
+        const order = this.props.orders.length,
+            video = this.props.videos,
+            search = this.props.useSearch;
+
         if (order === 0) {
             if (localStorage.getItem(this.props.user.token)) {
                 let orders = JSON.parse(localStorage.getItem(this.props.user.token));
                 orders = Object.values(orders);
-                this.props.LocalStore(orders);
+                this.props.localStore(orders);
             }
         }
-        const video = this.props.videos,
-            search = this.props.useSearch;
 
         if (video) {
             this.setState({item: video});
@@ -35,18 +35,17 @@ class SearchDef extends Component {
         }
     }
 
-
-    HandlerSearch = e => {
+    handlerSearch = e => {
         let search = e.target.value;
         this.setState({search});
     }
 
-    HandlerCont = e => {
+    handlerContent = e => {
         const content = e.target.value;
         this.setState({content});
     }
 
-    RequestVideo = () => {
+    requestVideo = () => {
         const search = this.state.search;
 
         this.videoService.SearchVideo(search)
@@ -58,7 +57,7 @@ class SearchDef extends Component {
         this.props.RequestTheVideo(videos);
     }
 
-    BtnLike = () => {
+    clickLike = () => {
         let add = {...this.props.addOrder},
             search = {...this.props.search};
         add = {...add, addOrder: true};
@@ -77,7 +76,7 @@ class SearchDef extends Component {
         }
         const classList = `video_content ${this.state.content}`;
         const VideoPage = items ? <>
-            <FilterPanel actBtn={this.state.content} Cont={this.HandlerCont} GenOrders={this.state.item.pageInfo}
+            <FilterPanel actBtn={this.state.content} Cont={this.handlerContent} GenOrders={this.state.item.pageInfo}
                          SearchPanel={this.state.search}/>
             <div className={classList}>
                 {Object.values(this.state.item.items).map((info, i) => {
@@ -90,8 +89,8 @@ class SearchDef extends Component {
 
         return (
             <div className={ClassWr}>
-                <SearchBar Search={e => this.HandlerSearch(e)} Val={this.state.search} BtnSearch={this.RequestVideo}
-                           Like={this.BtnLike} Add/>
+                <SearchBar Search={e => this.handlerSearch(e)} Val={this.state.search} BtnSearch={this.requestVideo}
+                           Like={this.clickLike} Add/>
                 {VideoPage}
             </div>
         )
@@ -111,7 +110,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        LocalStore: (data) => dispatch(LocalStoreOrder(data)),
+        localStore: (data) => dispatch(LocalStoreOrder(data)),
         RequestTheVideo: (data) => dispatch(VideoSearch(data)),
         NewSearch: (data) => dispatch(AddNewSearch(data)),
         BtnLike: (data) => dispatch(AddEdit(data)),

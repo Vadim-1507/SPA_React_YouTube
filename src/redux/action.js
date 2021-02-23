@@ -1,5 +1,5 @@
 export const EnterUserAction = (data) => {return {type: 'LOG_IN', data}};
-export const ExitUser = (data) => {return {type: 'EXIT', data}};
+export const ExitUser = () => {return {type: 'EXIT'}};
 export const VideoSearch = (data) => {return {type: 'VIDEO_SEARCH', data}};
 export const AddNewSearch = (data) => {return{type: 'SEARCH_LIKE', data}};
 export const AddEdit = (data) => {return {type: 'ADD_ORDER', data}};

@@ -13,42 +13,46 @@ class Order extends Component {
         search: ''
     }
 
-    componentDidUpdate() {
-        this.LocalStore();
+    componentDidMount() {
+        this.localStore();
     }
 
-    EditOrder = (order, i) => {
-        let add = {...this.props.addOrder};
+    componentDidUpdate() {
+        this.localStore();
+    }
+
+    editOrder = (order, i) => {
+        let add = {...this.props.addOrder},
+            editOrder = {...order};
         add = {...add, addOrder: false};
-        let editOrder = {...order};
         editOrder = {...editOrder, id: i};
 
-        this.props.TakeId(editOrder);
-        this.props.EditOrder(add);
+        this.props.takeId(editOrder);
+        this.props.editOrder(add);
         this.props.history.push('/modal');
     }
 
-    LocalStore = () => {
+    localStore = () => {
         const orders = {...this.props.orders};
         localStorage.setItem(this.props.user.token, JSON.stringify(orders));
     }
 
-    DeleteOrder = (id) => {
-        this.props.DeleteOrder(id);
+    deleteOrder = (id) => {
+        this.props.deleteOrder(id);
     }
 
-    UseOrder = (order) => {
-        let {search, maxRes, select} = order;
-        maxRes = +maxRes;
-        this.videoService.SearchVideo(search, maxRes, select)
+    useOrder = (order) => {
+        let {searching, maxResult, select} = order;
+        maxResult = +maxResult;
+        this.videoService.SearchVideo(searching, maxResult, select)
             .then(res => this.setState({item: res}))
             .catch(error => console.log(error));
         const videos = this.state.item;
 
-        this.props.UseSerOrder(search);
-        this.props.UseOrder(videos);
+        this.props.useSerOrder(searching);
+        this.props.useOrder(videos);
 
-        if(videos) {
+        if (videos) {
             this.props.history.replace('/');
         }
 
@@ -60,12 +64,12 @@ class Order extends Component {
                 {this.props.orders.map((order, i) => {
                     return (
                         <div className="order_wr" key={i}>
-                            <button className="order_title" onClick={() => this.UseOrder(order)}>{order.name}</button>
+                            <button className="order_title" onClick={() => this.useOrder(order)}>{order.name}</button>
 
                             <div className="order-btn_wr">
-                                <button className="order-btn edit" onClick={() => this.EditOrder(order, i)}>Изменить
+                                <button className="order-btn edit" onClick={() => this.editOrder(order, i)}>Изменить
                                 </button>
-                                <button className="order-btn delete" onClick={() => this.DeleteOrder(i)}>Удалить
+                                <button className="order-btn delete" onClick={() => this.deleteOrder(i)}>Удалить
                                 </button>
                             </div>
                         </div>
@@ -81,18 +85,16 @@ const mapStateToProps = (state) => {
         user: state.user,
         addOrder: state.addOrder,
         orders: state.orders,
-        search: state.search,
-        videos: state.videos
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        EditOrder: (data) => dispatch(AddEdit(data)),
-        TakeId: (data) => dispatch(EditTheOrder(data)),
-        DeleteOrder: (data) => dispatch(DeleteTheOrder(data)),
-        UseOrder: (data) => dispatch(VideoSearch(data)),
-        UseSerOrder: (data) => dispatch(UseSearch(data))
+        editOrder: (data) => dispatch(AddEdit(data)),
+        takeId: (data) => dispatch(EditTheOrder(data)),
+        deleteOrder: (data) => dispatch(DeleteTheOrder(data)),
+        useOrder: (data) => dispatch(VideoSearch(data)),
+        useSerOrder: (data) => dispatch(UseSearch(data))
     };
 }
 

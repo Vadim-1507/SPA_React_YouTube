@@ -1,7 +1,7 @@
 import React from "react";
 import './filter-panel.css';
 
-const FilterPanel = ({actBtn, SearchPanel, GenOrders, Cont}) => {
+function FilterPanel({actBtn, SearchPanel, GenOrders, Cont}) {
     let grid = 'form-style grid',
         list = 'form-style list';
     if (actBtn === 'list-video') {

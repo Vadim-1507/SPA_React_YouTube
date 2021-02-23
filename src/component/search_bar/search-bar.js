@@ -1,7 +1,8 @@
 import React from "react";
 import './search-bar.css';
 
-const SearchBar = ({Val, Search, BtnSearch, Like, Add}) => {
+function SearchBar({Val, Search, BtnSearch, Like}) {
+
     return (
         <>
             <h3 className="title">Поиск видео</h3>
@@ -16,4 +17,4 @@ const SearchBar = ({Val, Search, BtnSearch, Like, Add}) => {
     )
 }
 
-export default SearchBar
+export default SearchBar;

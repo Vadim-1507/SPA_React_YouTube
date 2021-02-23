@@ -57,10 +57,47 @@ h3.title {
     background: url("heart-act.png");
 }
 
-.container button.like {
+
+.favorite {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 78%;
+    width: 110px;
+    padding: 5px;
+    background: #FFFFFF;
+    border: 1px solid #1390E5;
+    border-radius: 6px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 7px rgba(23, 23, 25, 0.4);
+    transition: .3s;
+}
+
+.favorite:before, .favorite:after {
+    content: '';
+    position: absolute;
+    left: calc(50% - 12px);
+    border: 12px solid transparent;
+}
+
+.favorite:before {
+    top: -24px;
+    border-bottom: 12px solid #1390E5;
+}
+
+.favorite:after {
+    top: -22px;
+    border-bottom: 12px solid #ffffff;
+}
+
+.like.active:hover ~ .favorite {
     display: block;
 }
 
-.search-block button.like {
+.container .like {
+    display: block;
+}
+
+.search-block .like {
     display: none;
 }

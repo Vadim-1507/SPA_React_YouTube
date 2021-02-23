@@ -10,7 +10,7 @@ export default class VideoService {
     }
 
     async SearchVideo(search, maxRes = 12, order = 'relevance') {
-        const key = 'API_KEY';
+        const key = 'API_key';
         const url = `&key=${key}&maxResults=${maxRes}&q=${search}&order=${order}`;
         return await this.GetVideo(url);
     }

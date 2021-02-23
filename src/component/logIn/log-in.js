@@ -8,28 +8,26 @@ class LogIn extends Component {
         error: false,
         name: '',
         password: '',
-        passwordEye: false,
+        seePassword: false
     }
 
-    HandlerPass = e => {
+    showPassword = e => {
         e.preventDefault();
-        const passwordEye = !this.state.passwordEye;
-
-        this.setState({passwordEye});
+        const seePassword = !this.state.seePassword;
+        this.setState({seePassword});
     }
 
-    HandlerName = e => {
+    handlerName = e => {
         const value = e.target.value;
         this.setState({name: value});
     }
 
-    HandlerPswd = e => {
+    handlerPassword = e => {
         const value = e.target.value;
         this.setState({password: value});
     }
 
-    BtnLogin = e => {
-        e.preventDefault();
+    clickLogIn = () => {
         let user = {...this.props.user};
         const name = this.state.name,
             password = this.state.password;
@@ -45,7 +43,7 @@ class LogIn extends Component {
         } else {
             this.setState({error: true});
         }
-        this.props.BtnLogin(user);
+        this.props.clickLogIn(user);
     }
 
     render() {
@@ -54,7 +52,7 @@ class LogIn extends Component {
         const error = this.state.error ? 'block' : 'none';
 
 
-        if (this.state.passwordEye) {
+        if (this.state.seePassword) {
             type = 'text';
             classEye = 'eye active';
         }
@@ -72,20 +70,20 @@ class LogIn extends Component {
                         <div className="input_wrapper">
                             <label> Логин
                                 <input type="text" className='input_auth user' placeholder='login'
-                                       onChange={(e) => this.HandlerName(e)}/>
+                                       onChange={(e) => this.handlerName(e)}/>
                             </label>
                         </div>
 
                         <div className="input_wrapper">
                             <label> Пароль
                                 <input type={type} className='input_auth pass' placeholder='password'
-                                       onChange={(e) => this.HandlerPswd(e)}/>
-                                <button className={classEye} onClick={e => this.HandlerPass(e)}></button>
+                                       onChange={(e) => this.handlerPassword(e)}/>
+                                <button className={classEye} onClick={e => this.showPassword(e)}></button>
                             </label>
                         </div>
 
                         <div className="btn_wrapper">
-                            <button className='btn_authorization' onClick={(e) => this.BtnLogin(e)}>Вход</button>
+                            <button className='btn_authorization' onClick={this.clickLogIn}>Вход</button>
                         </div>
                     </form>
                 </div>
@@ -103,7 +101,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        BtnLogin: (data) => dispatch(EnterUserAction(data))
+        clickLogIn: (data) => dispatch(EnterUserAction(data))
     };
 }
 

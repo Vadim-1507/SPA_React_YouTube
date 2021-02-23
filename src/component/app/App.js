@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {useEffect} from "react";
 import LogIn from "../logIn/log-in";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import './app.css';
@@ -9,34 +9,32 @@ import {connect} from "react-redux";
 import {EnterUserAction} from "../../redux/action";
 import Modal from "../modal/modal";
 
-class App extends Component {
-    componentDidMount() {
-        let user = {...this.props.user};
+function App({user, logIn}) {
+    useEffect(() => {
+        let userInfo = {...user};
         const token = localStorage.getItem('token');
 
         if (token) {
-            user = {...user, token};
+            userInfo = {...userInfo, token}
         }
-        this.props.LogIn(user)
-    }
+        logIn(userInfo);
+    }, [])
 
-    render() {
-        const page = this.props.user.token ?
-            <Router>
-                <Header/>
+    const page = user.token ?
+        <Router>
+            <Header/>
 
-                <Route exact path='/' component={SearchDef}/>
-                <Route path='/favorite' component={FavoriteOrder}/>
-                <Route path='/modal' component={Modal}/>
-            </Router> :
-            <LogIn/>
+            <Route exact path='/' component={SearchDef}/>
+            <Route path='/favorite' component={FavoriteOrder}/>
+            <Route path='/modal' component={Modal}/>
+        </Router> :
+        <LogIn/>
 
-        return (
-            <>
-                {page}
-            </>
-        )
-    }
+    return (
+        <>
+            {page}
+        </>
+    )
 }
 
 const mapStateToProps = (state) => {
@@ -47,7 +45,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        LogIn: (data) => dispatch(EnterUserAction(data))
+        logIn: (data) => dispatch(EnterUserAction(data))
     };
 }
 

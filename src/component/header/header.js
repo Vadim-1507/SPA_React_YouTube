@@ -1,52 +1,41 @@
-import React, {Component} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
 import './header.css'
 import {ExitUser} from "../../redux/action";
 import {withRouter} from 'react-router-dom';
 
-class Header extends Component {
-    Exit = () => {
-        let user = {...this.props.user};
-        this.props.history.replace('/')
+function Header({history, exitApp}) {
+    function exit() {
+        history.replace('/')
         localStorage.removeItem('token');
-
-        user = {...user, token: ''}
-        this.props.Exit(user)
+        exitApp();
     }
 
-    render() {
-        return (
-            <header>
-                <div className="container">
-                    <div className="header_content">
-                        <div className="left">
-                            <div className="header_logo_wr">
-                            </div>
+    return (
+        <header>
+            <div className="container">
+                <div className="header_content">
+                    <div className="left">
+                        <div className="header_logo_wr">
+                        </div>
 
-                            <NavLink exact to="/" className="header_link">Поиск</NavLink>
-                            <NavLink to="/favorite" className="header_link">Избранное</NavLink>
-                        </div>
-                        <div className="right">
-                            <button className="exit" onClick={this.Exit}>Выход</button>
-                        </div>
+                        <NavLink exact to="/" className="header_link">Поиск</NavLink>
+                        <NavLink to="/favorite" className="header_link">Избранное</NavLink>
+                    </div>
+                    <div className="right">
+                        <button className="exit" onClick={exit}>Выход</button>
                     </div>
                 </div>
-            </header>
-        )
-    }
-}
-
-const mapStateToProps = (state) => {
-    return {
-        state: state,
-    };
+            </div>
+        </header>
+    )
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        Exit: (data) => dispatch(ExitUser(data))
+        exitApp: () => dispatch(ExitUser())
     };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
+export default withRouter(connect(null, mapDispatchToProps)(Header));
